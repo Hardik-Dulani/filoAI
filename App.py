@@ -59,7 +59,7 @@ if user_input:
         st.write(e)
     if prompt_type == 'Image generation \n':
         img = helper.generate_img(user_input)
-        st.image(img, caption="Displayed Image")
+        st.image(img, caption="Displayed Image",width=500)
         img_byte_arr = BytesIO()
         img.save(img_byte_arr, format='JPEG')  # You can change the format if needed
         img_byte_arr = img_byte_arr.getvalue()
