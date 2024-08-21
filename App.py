@@ -38,23 +38,20 @@ model = genai.GenerativeModel(
 st.title("fílos AI Chat")
 
 # Get user input
+st.write(" :```this is a code``` ")
 
-
-curr_history = []
-user_input = 0
-chat_session = model.start_chat(history=curr_history)
-if not curr_history:
-    user_input = st.text_input("Enter your message:",key = 'base_prompt')
+user_input = st.text_input("Enter your message:",key = 'base_prompt')
     
 
+chat_session = model.start_chat(history=[])
 
 
 if user_input:
     # Send the user input to the model and get the response
     
     try:
-        prompt_type= chat_session.send_message(f"You are my helper AI, that supports prompts for other AI in my application, I have multiple AIs that work on certain domains, You just have to take in the prompt I provide, understand and classify it in one of following categories, ['Continuous', 'Image generation', 'Rewrite', 'Summarize' , 'Internet Search', 'others'] you just have to give one word output with the name of the category, nothing else, regardless of the prompt, please make sure there are no other characters or line break prompt:{user_input}").text
-        curr_history.append({"role": "user", "content": user_input})
+        prompt_type= chat_session.send_message(f"You are my helper AI, that supports prompts for other AI in my application, I have multiple AIs that work on certain domains, You just have to take in the prompt I provide, understand and classify it in one of following categories, ['Image generation', 'Rewrite', 'Summarize' , 'Internet Search', 'others'] you just have to give one word output with the name of the category, nothing else, regardless of the prompt, please make sure there are no other characters or line break prompt:{user_input}").text
+
     except Exception as e:
         st.write(e)
     if prompt_type == 'Image generation \n':
@@ -71,5 +68,5 @@ if user_input:
             file_name="downloaded_image.jpeg",  # You can change the file name
             mime="image/png"  # You can change the MIME type based on the image format
         )
-    else:
-        st.write('Others')        
+    elif prompt_type == 'Summarize \n':
+                
