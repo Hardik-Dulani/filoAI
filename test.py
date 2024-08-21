@@ -8,4 +8,3 @@ def dump(data):
     with open(f"{data['id']}.pkl", "wb") as f:
         pickle.dump(data, f)
 x = load('b87a4a3a-519f-412a-87c2-55389a2b0c5f.pkl')
-print(x)
