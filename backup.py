@@ -2,8 +2,6 @@ import streamlit as st
 import os
 import google.generativeai as genai
 from dotenv import load_dotenv
-from io import BytesIO
-import helper
 
 # Load environment variables from .env file
 load_dotenv()
@@ -20,25 +18,33 @@ generation_config = {
     "response_mime_type": "text/plain",
 }
 
-# Initialize session state for chat history if it doesn't exist
+# Initialize session state for chat history and input if they don't exist
 if "chat_history" not in st.session_state:
     st.session_state.chat_history = []
+
+if "user_input" not in st.session_state:
+    st.session_state.user_input = ""
 
 # Streamlit UI
 st.title("fílos AI Chat")
 
-# Get user input
-user_input = st.text_input("Enter your message:")
+# Reload button to reset the session state
 
-if user_input:
+# Display the conversation history
+
+# Input field for user message
+user_input = st.text_input("Enter your message:", value=st.session_state.user_input, key="input")
+
+# Process the input when it's not empty
+if user_input and user_input != st.session_state.user_input:
     # Add user message to history
     st.session_state.chat_history.append({
         "role": "user",
         "parts": [{"text": user_input}]
     })
 
-    # Initialize chat session with the current history
     try:
+        # Initialize the model with the current history
         model = genai.GenerativeModel(
             model_name="gemini-1.5-flash",
             generation_config=generation_config,
@@ -56,14 +62,10 @@ if user_input:
         })
 
         # Display the response
-        st.write(response_text)
-
-        # Display conversation history
-        st.write("### Conversation History")
-        for entry in st.session_state.chat_history:
-            role = "You" if entry["role"] == "user" else "Model"
-            text_parts = " ".join(part["text"] for part in entry["parts"])
-            st.write(f"**{role}:** {text_parts}")
+        st.write(f"**Model:** {response_text}")
 
     except Exception as e:
         st.error(f"An error occurred while sending the message: {e}")
+
+    # Update session state to clear the input field
+    st.session_state.user_input = ""

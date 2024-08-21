@@ -59,7 +59,7 @@ if user_input:
         st.write(e)
     if prompt_type == 'Image generation \n':
         img = helper.generate_img(user_input)
-        st.image(img, caption="Displayed Image", use_column_width=True)
+        st.image(img, caption="Displayed Image")
         img_byte_arr = BytesIO()
         img.save(img_byte_arr, format='JPEG')  # You can change the format if needed
         img_byte_arr = img_byte_arr.getvalue()
@@ -72,29 +72,4 @@ if user_input:
             mime="image/png"  # You can change the MIME type based on the image format
         )
     else:
-        other_session = model.start_chat(history=curr_history)
-        response = 'Hello, how can I help you?'
-        i = 0
-        while True:
-            i+=1
-            st.write('response')
-            try:
-                user_response = st.text_input("",key = i)
-                reponse = other_session.send_message(user_input)
-                curr_history.append({"role": "user", "content": response.text})
-                
-            except Exception as e:
-                st.write(e)
-                break
-        
-        
-        
-
-
-
-
-    # prompt_type = dict(prompt_obj.get('text', 'General')
-    # Display the response
-    
-    
-    
+        st.write('Others')        
