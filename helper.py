@@ -6,6 +6,28 @@ from urllib.parse import urlparse
 import requests
 import json
 import os
+import streamlit as st
+from PIL import Image
+from io import BytesIO
+
+
+
+
+### IMAGE GENERATION
+
+def generate_img(prompt):
+
+    prompt = prompt.replace(" ", "%20")
+    image_url = f"https://image.pollinations.ai/prompt/{prompt}"
+    
+    # Fetch the image from the URL
+    response = requests.get(image_url)
+    img = Image.open(BytesIO(response.content))
+
+    # Display the image in Streamlit
+    return img
+    
+
 
 def search_google_web_automation(query):
     # Set up Chrome options
@@ -62,5 +84,5 @@ def search_google_web_automation(query):
     return results[:3]
 
 # Example usage
-search_results = search_google_web_automation('Something')
-print(json.dumps(search_results, indent=2))
+# search_results = search_google_web_automation('Something')
+# print(json.dumps(search_results, indent=2))
