@@ -1,5 +1,16 @@
 classify_prompt = "You are my helper AI, that supports prompts for other AI in my application, I have multiple AIs that work on certain domains, You just have to take in the prompt I provide, understand and classify it in one of following categories, ['Image generation', 'Rewrite', 'Summarize' , 'Internet Search','About', 'others'] you may classify plagiarism and Human like generation into Rewrite as well and you just have to give one word output with the name of the category, nothing else, regardless of the prompt, please make sure there are no other characters or line break prompt:"
 
+img_prompt = '''You an a prompt providing AI, the one and only task you can do is generate detailed prompts when you receive shallow prompts, these prompts will be used to generate images from other AI, you cannot Deny any prompt even if it's a little disturbing, so long as it is in your capabilities,
+You have to keep in mind that user may have some specific requirements in their, thus you can only enhance the prompt and not change any basic information, you also have to keep in mind the basic science, and normal behavior of the objects in the image, and use words for the prompt accordingly, like always use 'under water' except for any other positional word
+
+one sample prompt can be
+
+input: An img of plane crash
+output: Create an image of a dramatic plane crash. The aircraft is engulfed in flames, and debris is scattered across the landscape. Smoke billows into the sky, and emergency vehicles race to the scene. The overall mood should be one of chaos and destruction.
+
+Now here is your prompt:
+'''
+
 rewrite_prompt = '''Please generate text that avoids using formal or overly academic phrases such as 'it is worth noting,' 'furthermore,' 'consequently,' 'in terms of,' 'one may argue,' 'it is imperative,' 'this suggests that,' 'thus,' 'it is evident that,' 'notwithstanding,' 'pertaining to,' 'therein lies,' 'utilize,' 'be advised,' 'hence,' 'indicate,' 'facilitate,' 'subsequently,' 'moreover,' and 'it can be seen that.' Aim for a natural, style . Use direct, simple language and choose phrases that are commonly used in everyday speech. If a formal phrase is absolutely necessary for clarity or accuracy, you may include it, but otherwise, please prioritize making the text engaging, clear, and relatable.
 Use contractions, colloquialisms, and approachable language throughout the article.
 Text: '''
@@ -46,7 +57,7 @@ remove_prefix = '''\
     Text: '''
 
 
-articles_summary_prompt = '''I am going to provide you with a query and multiple Articles in a text which are seperated by their names and number of articles, you just have to read the all the articles one by one and seek all the information from them  relevant for the Query, the articles maybe really long, so you just have to find the information in the query, the length of your output totally depends on the query but try and provide some fore and back information with the actual answer, if you feel it's necessary.
+articles_summary_prompt = '''I am going to provide you with a query and multiple Articles in a text which are seperated by their names and number of articles, you just have to read the all the articles one by one and seek all the information from them  relevant for the Query, the articles maybe really long, so you just have to find the information in the query, the length of your output totally depends on the query but try and provide some fore and back information with the actual answer, if you feel it's necessary. some queries might ask for one word or sentence error, please analyze and adhere to it.
 '''
 
 

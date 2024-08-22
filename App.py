@@ -58,11 +58,13 @@ if user_input:
         prompt_type= chat_session.send_message(f"{prompts.classify_prompt}{user_input}").text
         
         user_input = chat_session.send_message(f"{prompts.remove_prefix} {user_input}").text
-        
+        st.write(prompt_type)
         if prompt_type == 'Image generation \n':
-            response = 'I hope the picture met your expectations, if you want you can download the iamge or generate a new one'
+            response = 'I hope the picture met your expectations, if you want you can download the image or generate a new one'
             with st.spinner("Processing..."):
-                img = helper.generate_img(user_input)
+        
+                img_prompt = chat_session.send_message(f"{prompts.img_prompt} {user_input}").text
+                img = helper.generate_img(img_prompt)
             with st.chat_message("assistant"):
                 st.image(img, caption="credit: pollinations.ai",width=500)
                 img_byte_arr = BytesIO()
@@ -83,8 +85,10 @@ if user_input:
         elif prompt_type == 'Rewrite \n':
             with st.spinner("Processing..."):
                 response = chat_session.send_message(f"{prompts.rewrite_prompt}{user_input}").text
-        elif prompt_type == 'Internet Search \n':
-        
+        elif prompt_type == 'Internet Search \n' or 'InternetSearch \n':
+            user_input = chat_session.send_message(f"{prompts.remove_prefix} {user_input}").text
+            st.write(user_input )
+            
             with st.spinner("Processing..."):
                 search_results = google_serp.search_google_custom_api(user_input,gs_api,cse_id)
                 
@@ -97,11 +101,14 @@ if user_input:
                     if this_article:
                         curr_articles += f"Article {j} \n" + this_article + "\n"
                         j+=1
-                
+            st.write(search_results)
+
             if curr_articles != "":
+                
                 try:
                     response = chat_session.send_message(f"{prompts.articles_summary_prompt} query={user_input} articles = {curr_articles}").text
-                except:
+                except Exception as e:
+                    st.write(e)
                     response = chat_session.send_message(prompts.general_prompt + user_input).text
 
             else:

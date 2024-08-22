@@ -24,5 +24,5 @@ def search_google_custom_api(query, api_key, cse_id):
                 "snippet": item.get("snippet")
             })
     
-    return results[:5]
+    return results[:20]
 
