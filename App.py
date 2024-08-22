@@ -66,7 +66,7 @@ if user_input:
                 img_prompt = chat_session.send_message(f"{prompts.img_prompt} {user_input}").text
                 img = helper.generate_img(img_prompt)
             with st.chat_message("assistant"):
-                st.image(img, caption="credit: pollinations.ai",width=500)
+                st.image(img, caption="credit: pollinations.ai")
                 img_byte_arr = BytesIO()
                 img.save(img_byte_arr, format='JPEG')  # You can change the format if needed
                 img_byte_arr = img_byte_arr.getvalue()
