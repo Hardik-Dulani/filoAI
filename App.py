@@ -104,6 +104,7 @@ if user_input:
             
 
             if curr_articles != "":
+                st.write('internet here')
                 
                 try:
                     response = chat_session.send_message(f"{prompts.articles_summary_prompt} query={user_input} articles = {curr_articles}").text
@@ -126,7 +127,7 @@ if user_input:
             st.write('general mein')
             response = chat_session.send_message(prompts.general_prompt + user_input).text
             
-        
+        st.write()
     except Exception as e:
 
         
