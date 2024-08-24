@@ -118,7 +118,7 @@ if user_input:
                 response = chat_session.send_message(prompts.general_prompt + user_input).text
 
 
-        elif prompt_type == 'About \n':
+        elif prompt_type == 'About \n' or prompt_type == 'About':
             response = chat_session.send_message(f"{prompts.about_prompt}{user_input}").text
 
         else:
