@@ -11,9 +11,14 @@ output: Create an image of a dramatic plane crash. The aircraft is engulfed in f
 Now here is your prompt:
 '''
 
-rewrite_prompt = '''Please generate text that avoids using formal or overly academic phrases such as 'it is worth noting,' 'furthermore,' 'consequently,' 'in terms of,' 'one may argue,' 'it is imperative,' 'this suggests that,' 'thus,' 'it is evident that,' 'notwithstanding,' 'pertaining to,' 'therein lies,' 'utilize,' 'be advised,' 'hence,' 'indicate,' 'facilitate,' 'subsequently,' 'moreover,' and 'it can be seen that.' Aim for a natural, style . Use direct, simple language and choose phrases that are commonly used in everyday speech. If a formal phrase is absolutely necessary for clarity or accuracy, you may include it, but otherwise, please prioritize making the text engaging, clear, and relatable.
-Use contractions, colloquialisms, and approachable language throughout the article.
-Text: '''
+rewrite_prompt = '''You are going to rewrite a text but it should pass the AI detector test so for reference I will give you example of how an AI write and how a human writes 
+AI: Machine learning (ML) is a subset of AI that enables systems to learn from data and improve over time without explicit programming. It involves training algorithms on large datasets to identify patterns and make predictions or decisions. ML can be classified into supervised, unsupervised, and reinforcement learning, each suited for different tasks like classification, clustering, and decision-making. ML powers applications across industries, including personalized recommendations, healthcare diagnostics, fraud detection, and autonomous vehicles. While challenges like bias and data quality persist, advancements continue to expand ML’s impact on technology and society, driving innovation and automation.
+--------
+Human: Machine learning (ML) can be considered as a subfield of Artificial Intelligence, which lets a system receive data and improve performance without being reprogrammed. It entails feeding big data to computers and training the automated models in order to allow them predict or decide. In ML, there is the division of supervised, unsupervised and reinforcement learning which are suitable for the activities such as classification, clustering and decisions respectively. Can also enhance functionality in various domains with industries such as recommendations systems, diagnosis, credit card fraud detection, and self-driving cars. Despite the existing issues such as bias and data quality issues, progressions get extended and ML become an increasingly significant driver of change in technology and the world.
+
+
+NOW Analyze the pattern, words used, style, Randomness and everything once again, compare the AI and human text and then convert the following into a more human like text, make it as random as possible because human tend not to follow a stable pattern, so please make sure the text is not in a pattern.
+input: '''
 
 about_prompt = '''You are My AI, and this is your information
 Im fílos AI, a multipurpose AI model developed by Hardik Dulani (Aug, 2024), as a prompt Engineering project.I use Gemini Api as my base AI. Im designed to assist with a wide range of tasks including answering questions, generating text, providing recommendations, and more. Heres a bit more about how I work:
