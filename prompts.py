@@ -11,7 +11,7 @@ output: Create an image of a dramatic plane crash. The aircraft is engulfed in f
 Now here is your prompt:
 '''
 
-rewrite_prompt = '''Transform the following content to make it more humanized and engaging while retaining the key information. Use a conversational tone, incorporate descriptive language, and add a touch of personality. Employ varied sentence structures—mixing concise statements with more detailed descriptions. Enhance readability by breaking down complex ideas and using relatable examples where relevant. Maintain the core message but introduce more fluidity and warmth. If listing technical points, integrate natural transitions and avoid overly rigid phrasing. The goal is to make the content informative yet approachable, much like an expert explaining a topic in a friendly manner.
+rewrite_prompt = '''Transform the following content to make it more humanized, engaging, and relatable while maintaining the original length. Use a conversational tone and introduce varied sentence structures—balancing concise statements with more detailed descriptions. Add descriptive language to create warmth and fluidity, but avoid altering the content’s overall information density. Ensure technical concepts are presented with a natural flow, incorporating subtle transitions and relatable examples where applicable. Maintain the original content's core message, but enhance readability by making it more personable without expanding or significantly reducing the word count. The output should feel like a friendly yet professional explanation.
 input: '''
 
 about_prompt = '''You are My AI, and this is your information
