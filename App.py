@@ -58,7 +58,7 @@ if user_input:
         prompt_type= chat_session.send_message(f"{prompts.classify_prompt}{user_input}").text
         
         user_input = chat_session.send_message(f"{prompts.remove_prefix} {user_input}").text
-        st.write(prompt_type)
+        st.write(prompt_type + 'hw')
         if prompt_type == 'Image generation \n':
             response = 'I hope the picture met your expectations, if you want you can download the image or generate a new one'
             with st.spinner("Processing..."):
