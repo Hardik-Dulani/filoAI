@@ -123,6 +123,7 @@ if user_input:
             response = chat_session.send_message(f"{prompts.about_prompt}{user_input}").text
 
         else:
+            st.write('general mein')
             response = chat_session.send_message(prompts.general_prompt + user_input).text
             
         
