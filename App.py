@@ -119,6 +119,7 @@ if user_input:
 
 
         elif prompt_type == 'About \n' or prompt_type == 'About':
+            st.write('here')
             response = chat_session.send_message(f"{prompts.about_prompt}{user_input}").text
 
         else:
