@@ -58,7 +58,7 @@ if user_input:
         prompt_type= chat_session.send_message(f"{prompts.classify_prompt}{user_input}").text
         
         user_input = chat_session.send_message(f"{prompts.remove_prefix} {user_input}").text
-        st.write(prompt_type + 'hw')
+        
         if prompt_type == 'Image generation \n':
             response = 'I hope the picture met your expectations, if you want you can download the image or generate a new one'
             with st.spinner("Processing..."):
@@ -85,8 +85,8 @@ if user_input:
         elif prompt_type == 'Rewrite \n':
             with st.spinner("Processing..."):
                 response = chat_session.send_message(f"{prompts.rewrite_prompt}{user_input}").text
-        elif prompt_type == 'Internet Search \n' or 'InternetSearch \n':
-            st.write(f'we got here 1 {prompt_type}')
+        elif prompt_type == 'Internet Search \n' or prompt_type == 'InternetSearch \n':
+            
             user_input = chat_session.send_message(f"{prompts.remove_prefix} {user_input}").text
             
             
@@ -105,7 +105,6 @@ if user_input:
             
 
             if curr_articles != "":
-                st.write('internet here')
                 
                 try:
                     response = chat_session.send_message(f"{prompts.articles_summary_prompt} query={user_input} articles = {curr_articles}").text
@@ -121,11 +120,11 @@ if user_input:
 
 
         elif prompt_type.strip().lower() == 'about \n' or prompt_type == 'about' or prompt_type.lower().startswith('about'):
-            st.write('here')
+            
             response = chat_session.send_message(f"{prompts.about_prompt}{user_input}").text
 
         else:
-            st.write('general mein')
+            
             response = chat_session.send_message(prompts.general_prompt + user_input).text
             
         st.write()
