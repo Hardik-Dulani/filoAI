@@ -86,7 +86,7 @@ if user_input:
             with st.spinner("Processing..."):
                 response = chat_session.send_message(f"{prompts.rewrite_prompt}{user_input}").text
         elif prompt_type == 'Internet Search \n' or 'InternetSearch \n':
-            st.write('we got here 1')
+            st.write(f'we got here 1 {prompt_type}')
             user_input = chat_session.send_message(f"{prompts.remove_prefix} {user_input}").text
             
             
