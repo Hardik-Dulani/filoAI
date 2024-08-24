@@ -118,7 +118,7 @@ if user_input:
                 response = chat_session.send_message(prompts.general_prompt + user_input).text
 
 
-        elif prompt_type == 'About \n' or prompt_type == 'About':
+        elif prompt_type.strip().lower() == 'about \n' or prompt_type == 'about':
             st.write('here')
             response = chat_session.send_message(f"{prompts.about_prompt}{user_input}").text
 
